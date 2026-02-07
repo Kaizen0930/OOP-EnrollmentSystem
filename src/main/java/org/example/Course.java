@@ -3,17 +3,17 @@ package org.example;
 public class Course {
 
     private String courseID;
-    String courseName;
-    String program;
+    private String courseName;
+    private String program;
 
     public Course(){
 
     }
 
-    public Course(String courseID, String courseName, String Program) {
+    public Course(String courseID, String courseName, String program) {
         this.courseID = courseID;
         this.courseName = courseName;
-        this.program = Program;
+        this.program = program;
     }
 
     public String getcourseID() {

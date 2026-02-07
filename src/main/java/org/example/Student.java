@@ -6,17 +6,15 @@ public class Student {
      private String studentName;
      private String program;
 
+    public Student() {
+
+    }
 
     public Student(String studentID, String studentName, String program) {
         this.studentID = studentID;
         this.studentName = studentName;
         this.program = program;
     }
-
-
-    public Student() {
-    }
-
 
     public String getStudentID() {
         return studentID;
