@@ -10,24 +10,23 @@ public class Main {
         StudentService studentService = new StudentService();
         CourseService courseService = new CourseService();
 
-        Student student = new Student();
-        student.setStudentID("012930");
-        student.setStudentName("John Doe");
-        student.setProgram("Information Technology");
-
-        studentService.addStudent(student);
+        studentService.addStudent(new Student("012930", "John Doe", "Information Technology"));
         studentService.addStudent(new Student("012931", "Jane Smith", "Computer Science"));
 
-        Course course = new Course();
-        course.setcourseID("932875");
-        course.setcourseName("Interprog");
-        course.setprogram("BSIT");
-
-        courseService.addCourse(course);
+        courseService.addCourse(new Course("932875", "Interprog", "BSIT"));
         courseService.addCourse(new Course("112233", "Data Structures", "BSCS"));
 
         studentService.displayAll();
-        System.out.println();
         courseService.displayAll();
+
+        studentService.updateStudent(new Student("012930", "John Doe", "Cyber Security"));
+        courseService.updateCourse(new Course("932875", "Advanced Java", "BSIT"));
+
+        studentService.displayAll();
+        courseService.displayAll();
+
+        System.out.println(studentService.deleteStudent(new Student("012931")));
+        System.out.println(courseService.deleteCourse(new Course("112233")));
+
     }
 }
