@@ -16,22 +16,22 @@ public class CourseService {
         }
     }
 
-    public void updateCourse(Course updatedCourse) {
-        for (int i = 0; i < courseList.size(); i++) {
-            if (courseList.get(i).getcourseID().equals(updatedCourse.getcourseID())) {
-                courseList.set(i, updatedCourse);
-                return;
-            }
-        }
-    }
-
-    public String deleteCourse(Course course) {
-        for (int i = 0; i < courseList.size(); i++) {
-            if (courseList.get(i).getcourseID().equals(course.getcourseID())) {
-                courseList.remove(i);
-                return "Successfully Deleted Course";
-            }
-        }
-        return "Error: Course not found";
-    }
+//    public void updateCourse(Course updatedCourse) {
+//        for (int i = 0; i < courseList.size(); i++) {
+//            if (courseList.get(i).getcourseID().equals(updatedCourse.getcourseID())) {
+//                courseList.set(i, updatedCourse);
+//                return;
+//            }
+//        }
+//    }
+//
+//    public String deleteCourse(Course course) {
+//        for (int i = 0; i < courseList.size(); i++) {
+//            if (courseList.get(i).getcourseID().equals(course.getcourseID())) {
+//                courseList.remove(i);
+//                return "Successfully Deleted Course";
+//            }
+//        }
+//        return "Error: Course not found";
+//    }
 }
