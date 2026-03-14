@@ -11,6 +11,11 @@ public class Student extends Person {
     }
 
     @Override
+    void mainTask(){
+        System.out.println("Student Learns");
+    }
+
+    @Override
     public String toString() {
         return "Student [ID=" + id + ", Name=" + name + ", Program=" + program + "]";
     }

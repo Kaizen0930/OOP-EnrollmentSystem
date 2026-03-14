@@ -1,6 +1,6 @@
 package org.example.model;
 
-public class Instructor extends Person {
+public abstract class Instructor extends Person {
     public String program;
 
     public Instructor() { super(); }
@@ -8,6 +8,11 @@ public class Instructor extends Person {
     public Instructor(String id, String name, String program) {
         super(id, name);
         this.program = program;
+    }
+
+    @Override
+    void mainTask(){
+        System.out.println("Teacher teaches");
     }
 
     @Override
