@@ -1,20 +1,13 @@
 package org.example.model;
 
 public class Course {
-    public String courseID;
+    public String courseCode;
     public String courseName;
-    public String program;
+    public int units;
 
-    public Course() {}
-
-    public Course(String courseID, String courseName, String program) {
-        this.courseID = courseID;
+    public Course(String courseCode, String courseName, int units) {
+        this.courseCode = courseCode;
         this.courseName = courseName;
-        this.program = program;
-    }
-
-    @Override
-    public String toString() {
-        return "Course [ID=" + courseID + ", Name=" + courseName + ", Program=" + program + "]";
+        this.units = units;
     }
 }

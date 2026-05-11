@@ -10,6 +10,7 @@ public class main {
         StudentRegistration studentService = new StudentRegistration();
         InstructorRegistration instructorService = new InstructorRegistration();
         CourseRegistration courseService = new CourseRegistration();
+        Department dept = new Department("College of Computer Studies");
 
         int choice;
         do {
@@ -31,7 +32,7 @@ public class main {
                     studentService.addStudent(new Student(sId, sName, sProg));
                     break;
                 case 2:
-                    for(Student s : studentService.getAllStudents()) System.out.println(s);
+                    for (Student s : studentService.getAllStudents()) System.out.println(s);
                     break;
                 case 3:
                     System.out.print("ID to update: "); int usId = sc.nextInt(); sc.nextLine();
@@ -51,7 +52,7 @@ public class main {
                     instructorService.addInstructor(new Instructor(iId, iName, iList));
                     break;
                 case 6:
-                    for(Instructor i : instructorService.getAllInstructors()) System.out.println(i);
+                    for (Instructor i : instructorService.getAllInstructors()) System.out.println(i);
                     break;
                 case 7:
                     System.out.print("ID to update: "); int uiId = sc.nextInt(); sc.nextLine();
@@ -65,28 +66,28 @@ public class main {
                     instructorService.removeInstructor(riId);
                     break;
                 case 9:
-                    System.out.print("ID: "); String cId = sc.next(); sc.nextLine();
+                    System.out.print("Course Code: "); String cId = sc.next(); sc.nextLine();
                     System.out.print("Name: "); String cName = sc.nextLine();
-                    System.out.print("Program: "); String cProg = sc.nextLine();
-                    courseService.addCourse(new Course(cId, cName, cProg));
+                    System.out.print("Units: "); int cUnits = sc.nextInt(); sc.nextLine();
+                    courseService.addCourse(dept, new Course(cId, cName, cUnits));
                     break;
                 case 10:
-                    for(Course c : courseService.getAllCourses()) System.out.println(c);
+                    courseService.displayCourses(dept);
                     break;
                 case 11:
-                    System.out.print("ID to update: "); String ucId = sc.next(); sc.nextLine();
+                    System.out.print("Course Code to update: "); String ucId = sc.next(); sc.nextLine();
                     System.out.print("New Name: "); String ucn = sc.nextLine();
-                    System.out.print("New Program: "); String ucp = sc.nextLine();
-                    courseService.updateCourse(ucId, ucn, ucp);
+                    System.out.print("New Units: "); int ucu = sc.nextInt(); sc.nextLine();
+                    System.out.println(courseService.updateCourse(dept, ucId, ucn, ucu));
                     break;
                 case 12:
-                    System.out.print("ID to remove: "); String rcId = sc.next();
-                    courseService.removeCourse(rcId);
+                    System.out.print("Course Code to remove: "); String rcId = sc.next();
+                    System.out.println(courseService.removeCourse(dept, rcId));
                     break;
                 case 13:
-                    for(Student s : studentService.getAllStudents()) System.out.println(s);
-                    for(Instructor i : instructorService.getAllInstructors()) System.out.println(i);
-                    for(Course c : courseService.getAllCourses()) System.out.println(c);
+                    for (Student s : studentService.getAllStudents()) System.out.println(s);
+                    for (Instructor i : instructorService.getAllInstructors()) System.out.println(i);
+                    courseService.displayCourses(dept);
                     break;
                 case 0: System.out.println("Ending..."); break;
                 default: System.out.println("Invalid choice");

@@ -2,36 +2,30 @@ package org.example.service;
 
 import org.example.Interface.ICourseService;
 import org.example.model.Course;
+import org.example.model.Department;
 import java.util.ArrayList;
 
 public class CourseRegistration implements ICourseService {
-    public ArrayList<Course> courseList = new ArrayList<>();
-
-    public CourseRegistration() {}
 
     @Override
-    public void addCourse(Course course) {
-        for (Course c : courseList) {
-            if (c.courseID.equals(course.courseID)) {
-                System.out.println("Duplicate course ID.");
-                return;
-            }
+    public void addCourse(Department dept, Course course) {
+        if (dept.courses != null && !dept.courses.contains(course)) {
+            dept.courses.add(course);
+            System.out.println("Course added successfully.");
         }
-        courseList.add(course);
-        System.out.println("Course added successfully.");
     }
 
     @Override
-    public ArrayList<Course> getAllCourses() {
-        return courseList;
+    public ArrayList<Course> getAllCourses(Department dept) {
+        return (ArrayList<Course>) dept.courses;
     }
 
     @Override
-    public String updateCourse(String courseID, String courseName, String program) {
-        for (Course c : courseList) {
-            if (c.courseID.equals(courseID)) {
-                c.courseName = courseName;
-                c.program = program;
+    public String updateCourse(Department dept, String code, String newName, int newUnits) {
+        for (Course c : dept.courses) {
+            if (c.courseCode.equals(code)) {
+                c.courseName = newName;
+                c.units = newUnits;
                 return "Course updated successfully.";
             }
         }
@@ -39,13 +33,21 @@ public class CourseRegistration implements ICourseService {
     }
 
     @Override
-    public String removeCourse(String courseID) {
-        for (int i = 0; i < courseList.size(); i++) {
-            if (courseList.get(i).courseID.equals(courseID)) {
-                courseList.remove(i);
+    public String removeCourse(Department dept, String code) {
+        for (int i = 0; i < dept.courses.size(); i++) {
+            if (dept.courses.get(i).courseCode.equals(code)) {
+                dept.courses.remove(i);
                 return "Course removed successfully.";
             }
         }
         return "Course not found.";
+    }
+
+    @Override
+    public void displayCourses(Department dept) {
+        System.out.println("Department: " + dept.departmentName);
+        for (Course c : dept.courses) {
+            System.out.println("- " + c.courseCode + ": " + c.courseName);
+        }
     }
 }

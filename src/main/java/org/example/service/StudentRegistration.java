@@ -1,11 +1,14 @@
 package org.example.service;
 
-import org.example.interfaces.IStudentService;
+// Check your sidebar: If the folder is named "Interface", use this:
+import org.example.Interface.IStudentService;
 import org.example.model.Student;
 import java.util.ArrayList;
 
 public class StudentRegistration implements IStudentService {
-    public ArrayList<Student> studentList = new ArrayList<>();
+
+    // Using private for better practice, but keeping the ArrayList dull and simple
+    private ArrayList<Student> studentList = new ArrayList<>();
 
     public StudentRegistration() {}
 
@@ -13,12 +16,12 @@ public class StudentRegistration implements IStudentService {
     public void addStudent(Student student) {
         for (Student s : studentList) {
             if (s.id == student.id) {
-                System.out.println("Duplicate student ID.");
+                System.out.println("Student ID already exists.");
                 return;
             }
         }
         studentList.add(student);
-        System.out.println("Student added successfully.");
+        System.out.println("Student " + student.name + " added successfully.");
     }
 
     @Override
@@ -32,10 +35,10 @@ public class StudentRegistration implements IStudentService {
             if (s.id == id) {
                 s.name = name;
                 s.program = program;
-                return "Student updated successfully.";
+                return "Updated successfully.";
             }
         }
-        return "Student not found.";
+        return "Not found.";
     }
 
     @Override
@@ -43,9 +46,9 @@ public class StudentRegistration implements IStudentService {
         for (int i = 0; i < studentList.size(); i++) {
             if (studentList.get(i).id == id) {
                 studentList.remove(i);
-                return "Student removed successfully.";
+                return "Removed successfully.";
             }
         }
-        return "Student not found.";
+        return "Not found.";
     }
 }
