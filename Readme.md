@@ -1,10 +1,17 @@
-# Inheritance
+# Enrollment System - Inheritance with Features
 
 ---
 
 **Author:** Kiehl Alvarez
 
-**Description**: 
-This project uses an Abstract Person class to share names and IDs. Student and Instructor inherit these traits while keeping their own programs. This design makes the code cleaner, organized, and much easier to manage. 
+### Student Management
+![Save Student](src/main/resources/Images/01.png)
 
-![ohmy.png](src/main/resources/Images/ohmy.png)
+### Instructor Management
+![Save Instructor](src/main/resources/Images/02.png)
+
+### Course Management
+![Save Course](src/main/resources/Images/03.png)
+
+### Full System Display
+![Display All](src/main/resources/Images/04.png)

@@ -3,15 +3,20 @@ package org.example.model;
 public class Student extends Person {
     public String program;
 
-    public Student() { super(); }
+    public Student() {}
 
-    public Student(String id, String name, String program) {
-        super(id, name); // Passes ID and Name to Person
+    public Student(int id, String name, String program) {
+        super(id, name);
         this.program = program;
     }
 
     @Override
     public String toString() {
         return "Student [ID=" + id + ", Name=" + name + ", Program=" + program + "]";
+    }
+
+    @Override
+    public void mainTask() {
+        System.out.println("I Study");
     }
 }

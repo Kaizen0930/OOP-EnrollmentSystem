@@ -1,17 +1,26 @@
 package org.example.model;
 
+import java.util.ArrayList;
+
 public class Instructor extends Person {
-    public String program;
+    public ArrayList<String> courses;
 
-    public Instructor() { super(); }
+    public Instructor() {
+        this.courses = new ArrayList<>();
+    }
 
-    public Instructor(String id, String name, String program) {
+    public Instructor(int id, String name, ArrayList<String> courses) {
         super(id, name);
-        this.program = program;
+        this.courses = courses;
+    }
+
+    @Override
+    public void mainTask() {
+        System.out.println("I Teach");
     }
 
     @Override
     public String toString() {
-        return "Instructor [ID=" + id + ", Name=" + name + ", Dept=" + program + "]";
+        return "Instructor [ID=" + id + ", Name=" + name + ", Courses=" + courses + "]";
     }
 }
