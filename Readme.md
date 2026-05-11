@@ -13,14 +13,22 @@ Author: Kiehl Alvarez
 ![SCH5.png](src/main/resources/Images/SCH5.png)
 ![SCH6.png](src/main/resources/Images/SCH6.png)
 
-Update Summary:
+# Update Summary:
 
-Replaced manual checks with JUnit assertions to verify scholarship math and enrollment guards.
+### Dynamic Scholarship Engine
 
-Verified that SectionFullException triggers a user-friendly error message instead of a system crash.
+The system now calculates tuition fees based on three distinct scholarship tiers:
 
-Confirmed that try-catch blocks effectively manage InputMismatchException during console entry.
+ACADEMIC: 50% Tuition Discount.
 
-Kept the Main class clean by isolating complex enrollment rules inside the EnrollmentRegistration service.
+ATHLETIC: 30% Tuition Discount.
 
-Converted business rules (like "50% off for academics") into executable, tested code.
+FINANCIAL_AID: 75% Tuition Discount.
+
+### Enrollment Guards & Validations
+
+Duplicate Prevention: Checks the section's student list to ensure a student isn't enrolled twice in the same section.
+
+Capacity Management: Enforces a maxCapacity limit. If a section is full, the system triggers a custom SectionFullException.
+
+Input Protection: All numeric inputs are wrapped in try-catch blocks. Typing non-numeric data (like "test") will no longer crash the application.
