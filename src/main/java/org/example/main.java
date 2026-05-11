@@ -6,7 +6,7 @@ import java.util.*;
 
 public class main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         StudentRegistration studentService = new StudentRegistration();
         InstructorRegistration instructorService = new InstructorRegistration();
         CourseRegistration courseService = new CourseRegistration();
@@ -20,60 +20,73 @@ public class main {
             System.out.println("[13] Display All    [0] End");
             System.out.print("Enter choice: ");
 
-            choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            choice = sc.nextInt();
+            sc.nextLine();
 
             switch (choice) {
                 case 1:
-                    System.out.print("ID: "); int sId = scanner.nextInt(); scanner.nextLine();
-                    System.out.print("Name: "); String sName = scanner.nextLine();
-                    System.out.print("Program: "); String sProg = scanner.nextLine();
+                    System.out.print("ID: "); int sId = sc.nextInt(); sc.nextLine();
+                    System.out.print("Name: "); String sName = sc.nextLine();
+                    System.out.print("Program: "); String sProg = sc.nextLine();
                     studentService.addStudent(new Student(sId, sName, sProg));
                     break;
-                case 2: studentService.displayAll(); break;
+                case 2:
+                    for(Student s : studentService.getAllStudents()) System.out.println(s);
+                    break;
                 case 3:
-                    System.out.print("ID to update: "); int usId = scanner.nextInt();
-                    studentService.updateStudent(new Student(usId, null, null));
+                    System.out.print("ID to update: "); int usId = sc.nextInt(); sc.nextLine();
+                    System.out.print("New Name: "); String un = sc.nextLine();
+                    System.out.print("New Program: "); String up = sc.nextLine();
+                    studentService.updateStudent(usId, un, up);
                     break;
                 case 4:
-                    System.out.print("ID to remove: "); int rsId = scanner.nextInt();
-                    studentService.delete(new Student(rsId, null, null));
+                    System.out.print("ID to remove: "); int rsId = sc.nextInt();
+                    studentService.removeStudent(rsId);
                     break;
                 case 5:
-                    System.out.print("ID: "); int iId = scanner.nextInt(); scanner.nextLine();
-                    System.out.print("Name: "); String iName = scanner.nextLine();
-                    System.out.print("Course: "); String iCourse = scanner.nextLine();
+                    System.out.print("ID: "); int iId = sc.nextInt(); sc.nextLine();
+                    System.out.print("Name: "); String iName = sc.nextLine();
+                    System.out.print("Course: "); String iCourse = sc.nextLine();
                     ArrayList<String> iList = new ArrayList<>(); iList.add(iCourse);
                     instructorService.addInstructor(new Instructor(iId, iName, iList));
                     break;
-                case 6: instructorService.displayAll(); break;
+                case 6:
+                    for(Instructor i : instructorService.getAllInstructors()) System.out.println(i);
+                    break;
                 case 7:
-                    System.out.print("ID to update: "); int uiId = scanner.nextInt();
-                    instructorService.updateInstructor(new Instructor(uiId, null, null));
+                    System.out.print("ID to update: "); int uiId = sc.nextInt(); sc.nextLine();
+                    System.out.print("New Name: "); String uin = sc.nextLine();
+                    System.out.print("New Course: "); String uic = sc.nextLine();
+                    ArrayList<String> uil = new ArrayList<>(); uil.add(uic);
+                    instructorService.updateInstructor(uiId, uin, uil);
                     break;
                 case 8:
-                    System.out.print("ID to remove: "); int riId = scanner.nextInt();
-                    instructorService.delete(new Instructor(riId, null, null));
+                    System.out.print("ID to remove: "); int riId = sc.nextInt();
+                    instructorService.removeInstructor(riId);
                     break;
                 case 9:
-                    System.out.print("ID: "); String cId = scanner.next(); scanner.nextLine();
-                    System.out.print("Name: "); String cName = scanner.nextLine();
-                    System.out.print("Program: "); String cProg = scanner.nextLine();
+                    System.out.print("ID: "); String cId = sc.next(); sc.nextLine();
+                    System.out.print("Name: "); String cName = sc.nextLine();
+                    System.out.print("Program: "); String cProg = sc.nextLine();
                     courseService.addCourse(new Course(cId, cName, cProg));
                     break;
-                case 10: courseService.displayAll(); break;
+                case 10:
+                    for(Course c : courseService.getAllCourses()) System.out.println(c);
+                    break;
                 case 11:
-                    System.out.print("ID to update: "); String ucId = scanner.next();
-                    courseService.updateCourse(new Course(ucId, null, null));
+                    System.out.print("ID to update: "); String ucId = sc.next(); sc.nextLine();
+                    System.out.print("New Name: "); String ucn = sc.nextLine();
+                    System.out.print("New Program: "); String ucp = sc.nextLine();
+                    courseService.updateCourse(ucId, ucn, ucp);
                     break;
                 case 12:
-                    System.out.print("ID to remove: "); String rcId = scanner.next();
-                    courseService.delete(new Course(rcId, null, null));
+                    System.out.print("ID to remove: "); String rcId = sc.next();
+                    courseService.removeCourse(rcId);
                     break;
                 case 13:
-                    studentService.displayAll();
-                    instructorService.displayAll();
-                    courseService.displayAll();
+                    for(Student s : studentService.getAllStudents()) System.out.println(s);
+                    for(Instructor i : instructorService.getAllInstructors()) System.out.println(i);
+                    for(Course c : courseService.getAllCourses()) System.out.println(c);
                     break;
                 case 0: System.out.println("Ending..."); break;
                 default: System.out.println("Invalid choice");
