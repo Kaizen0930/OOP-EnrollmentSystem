@@ -1,4 +1,4 @@
-# Enrollment System - Features with Implementations
+# Enrollment System - JUnit Testing
 
 ---
 
@@ -6,29 +6,27 @@ Author: Kiehl Alvarez
 
 ---
 
-### 1. See  student appear in the console. System Validation when student ID Duplicates.
-![Student](src/main/resources/Images/Ichi.png)
+### 1. Confirms that courses are properly linked to departments and that removal logic operates without errors.
+![CourseRegTest.png](src/main/resources/Images/CourseRegTest.png)
 
-### 2. Modify data and handle complex objects(Instructors).
-![Instructor](src/main/resources/Images/Ni.png)
+### 2. Ensures the system correctly manages section limits and triggers the SectionFullException when capacity is exceeded.
+![enrollmentregistest.png](src/main/resources/Images/enrollmentregistest.png)
 
-### 3. Removal logic (the index-based loop) works without crashing.
-![Course](src/main/resources/Images/San.png)
+### 3. Validates the successful handling, modification, and assignment of complex Instructor objects within departments.
+![Instructorregistest.png](src/main/resources/Images/Instructorregistest.png)
 
-### 4. Display All
-![Full Display](src/main/resources/Images/Yon.png)
+### 4. Verifies that student data is added correctly and ensures duplicate IDs are blocked by the system.
+![studentregistest.png](src/main/resources/Images/studentregistest.png)
 
-### 5. Select [0] to End.
-![Process](src/main/resources/Images/Go.png)
+### 5. Tests the accuracy of fee calculations based on units and validates the update of remaining balances.
+![tuitionregistest.png](src/main/resources/Images/tuitionregistest.png)
 
 Update:
 
-The system now checks for duplicate IDs and full sections.
+The system now uses JUnit 5 to automate validation and ensure logic accuracy.
 
-Information is saved in lists while the program is running.
+Information is verified in lists through assertions rather than manual console checks.
 
-Services handle all the work to keep the Main class simple.
+Services handle all the work to keep the Main class simple and are fully unit-tested.
 
-Refined the service layer. Added 2 registrations(enrollment and tuition).
-
-Implementations refined my code by transforming abstract "to-do" lists into concrete, executable logic that actually processes data and enforces business rules.
+Refined the service layer. Added automated tests for enrollment and tuition.
