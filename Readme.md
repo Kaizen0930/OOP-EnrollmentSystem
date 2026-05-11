@@ -1,4 +1,4 @@
-# Enrollment System - JUnit Testing
+# Enrollment System - Scholarship & Validations
 
 ---
 
@@ -6,27 +6,21 @@ Author: Kiehl Alvarez
 
 ---
 
-### 1. Confirms that courses are properly linked to departments and that removal logic operates without errors.
-![CourseRegTest.png](src/main/resources/Images/CourseRegTest.png)
+![SCH1.png](src/main/resources/Images/SCH1.png)
+![SCH2.png](src/main/resources/Images/SCH2.png)
+![SCH3.png](src/main/resources/Images/SCH3.png)
+![SCH4.png](src/main/resources/Images/SCH4.png)
+![SCH5.png](src/main/resources/Images/SCH5.png)
+![SCH6.png](src/main/resources/Images/SCH6.png)
 
-### 2. Ensures the system correctly manages section limits and triggers the SectionFullException when capacity is exceeded.
-![enrollmentregistest.png](src/main/resources/Images/enrollmentregistest.png)
+Update Summary:
 
-### 3. Validates the successful handling, modification, and assignment of complex Instructor objects within departments.
-![Instructorregistest.png](src/main/resources/Images/Instructorregistest.png)
+Replaced manual checks with JUnit assertions to verify scholarship math and enrollment guards.
 
-### 4. Verifies that student data is added correctly and ensures duplicate IDs are blocked by the system.
-![studentregistest.png](src/main/resources/Images/studentregistest.png)
+Verified that SectionFullException triggers a user-friendly error message instead of a system crash.
 
-### 5. Tests the accuracy of fee calculations based on units and validates the update of remaining balances.
-![tuitionregistest.png](src/main/resources/Images/tuitionregistest.png)
+Confirmed that try-catch blocks effectively manage InputMismatchException during console entry.
 
-Update:
+Kept the Main class clean by isolating complex enrollment rules inside the EnrollmentRegistration service.
 
-The system now uses JUnit 5 to automate validation and ensure logic accuracy.
-
-Information is verified in lists through assertions rather than manual console checks.
-
-Services handle all the work to keep the Main class simple and are fully unit-tested.
-
-Refined the service layer. Added automated tests for enrollment and tuition.
+Converted business rules (like "50% off for academics") into executable, tested code.
