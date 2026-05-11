@@ -1,31 +1,36 @@
 package org.example.model;
 
-public class Student {
-    private String studentID;
-    private String studentName;
-    private String program;
+public class Student extends Person {
+    public String program;
+    public String scholarshipType; // "ACADEMIC", "ATHLETIC", "FINANCIAL_AID", or null
+    public double tuitionFee;
 
     public Student() {}
 
-    public Student(String studentID) {
-        this.studentID = studentID;
-    }
-
-    public Student(String studentID, String studentName, String program) {
-        this.studentID = studentID;
-        this.studentName = studentName;
+    public Student(int id, String name, String program) {
+        super(id, name);
         this.program = program;
+        this.scholarshipType = null;
+        this.tuitionFee = 0.0;
     }
 
-    public String getStudentID() { return studentID; }
-    public void setStudentID(String studentID) { this.studentID = studentID; }
-    public String getStudentName() { return studentName; }
-    public void setStudentName(String studentName) { this.studentName = studentName; }
-    public String getProgram() { return program; }
-    public void setProgram(String program) { this.program = program; }
+    public Student(int id, String name, String program, double tuitionFee) {
+        super(id, name);
+        this.program = program;
+        this.scholarshipType = null;
+        this.tuitionFee = tuitionFee;
+    }
 
     @Override
     public String toString() {
-        return "Student [ID=" + studentID + ", Name=" + studentName + ", Program=" + program + "]";
+        String scholarship = (scholarshipType != null) ? scholarshipType : "None";
+        return "Student [ID=" + id + ", Name=" + name + ", Program=" + program
+                + ", Scholarship=" + scholarship
+                + ", Tuition=₱" + String.format("%.2f", tuitionFee) + "]";
+    }
+
+    @Override
+    public void mainTask() {
+        System.out.println("I Study");
     }
 }
